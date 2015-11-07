@@ -4,24 +4,21 @@ import java.util.List;
 
 public class Anuncio extends Contenido {
 
-	public List<InterfazContenido> obtenerListaReproduccion() {
-		// TODO Auto-generated method stub
+	private String titulo = "PUBLICIDAD";
+	private long duracion = 5;
+
+	public List<Contenido> buscar(String subcadena) {
 		return null;
 	}
 
-	public List<InterfazContenido> buscar(String subcadena) {
-		// TODO Auto-generated method stub
+	public void agregar(Contenido contenido, Contenido predecesor) {	
+	}
+
+	public void eliminar(Contenido contenido) {		
+	}
+
+	public List<Contenido> obtenerListaReproduccion() {
 		return null;
 	}
-
-	public void agregar(InterfazContenido contenido, InterfazContenido predecesor) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void eliminar(InterfazContenido contenido) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }

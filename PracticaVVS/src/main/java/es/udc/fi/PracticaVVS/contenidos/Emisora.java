@@ -1,27 +1,43 @@
 package es.udc.fi.PracticaVVS.contenidos;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import es.udc.fi.PracticaVVS.utiles.CadenaErroneaException;
+import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
 
 public class Emisora extends Contenido {
 
-	public List<InterfazContenido> obtenerListaReproduccion() {
-		// TODO Auto-generated method stub
-		return null;
+	private List<Contenido> listaReproduccion = new ArrayList();
+	
+	public List<Contenido> obtenerListaReproduccion() {
+		return listaReproduccion;
 	}
 
-	public List<InterfazContenido> buscar(String subcadena) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Contenido> buscar(String subcadena) throws CadenaErroneaException {
+		if(subcadena==null) throw new CadenaErroneaException();
+		ArrayList<Contenido> list = new ArrayList();
+		for(Contenido c: listaReproduccion){
+			if(c.obtenerTitulo().contains(subcadena)){
+				list.add(c);
+			}
+		}
+		return list;
 	}
 
-	public void agregar(InterfazContenido contenido, InterfazContenido predecesor) {
-		// TODO Auto-generated method stub
-		
+	public void agregar(Contenido contenido, Contenido predecesor) {
+		int pos = listaReproduccion.indexOf(predecesor);
+		if(pos>=0){
+			listaReproduccion.add(pos+1,contenido);
+		}else{
+			listaReproduccion.add(0, contenido);
+		}
 	}
 
-	public void eliminar(InterfazContenido contenido) {
-		// TODO Auto-generated method stub
-		
+	public void eliminar(Contenido contenido) throws UnexistingContenidoException {
+		if(listaReproduccion.contains(contenido)){
+			listaReproduccion.remove(contenido);
+		}else throw new UnexistingContenidoException();	
 	}
 
 }
