@@ -1,0 +1,27 @@
+package es.udc.fi.PracticaVVS.servidores;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import es.udc.fi.PracticaVVS.contenidos.Contenido;
+import es.udc.fi.PracticaVVS.utiles.CadenaErroneaException;
+import es.udc.fi.PracticaVVS.utiles.Token;
+import es.udc.fi.PracticaVVS.utiles.UnexistingTokenException;
+public class ServidorRespaldado extends Servidor {
+
+	private Servidor respaldo;
+	
+	public ServidorRespaldado(String nombre, Token specialToken, Servidor respaldo) {
+		super(nombre, specialToken);
+		this.respaldo = respaldo;
+	}
+
+	public List<Contenido> buscar(String subcadena, Token token) throws UnexistingTokenException, CadenaErroneaException {
+		ArrayList<Contenido> list = (ArrayList<Contenido>) super.buscar(subcadena, token);
+		if(list.size()==0){
+			list = (ArrayList<Contenido>) respaldo.buscar(subcadena, token);
+		}
+		return list;
+	}
+	
+}
