@@ -10,6 +10,7 @@ import es.udc.fi.PracticaVVS.utiles.UnexistingTokenException;
 public class ServidorRespaldado extends Servidor {
 
 	private Servidor respaldo;
+	private Token respaldoToken;
 	
 	public ServidorRespaldado(String nombre, Token specialToken, Servidor respaldo) {
 		super(nombre, specialToken);
@@ -18,8 +19,11 @@ public class ServidorRespaldado extends Servidor {
 
 	public List<Contenido> buscar(String subcadena, Token token) throws UnexistingTokenException, CadenaErroneaException {
 		ArrayList<Contenido> list = (ArrayList<Contenido>) super.buscar(subcadena, token);
-		if(list.size()==0){
-			list = (ArrayList<Contenido>) respaldo.buscar(subcadena, token);
+		if(list.size()==0 && respaldo!=null){
+			if(respaldoToken==null||respaldoToken.getCount()==0){
+				respaldoToken = respaldo.alta();
+			}
+			list = (ArrayList<Contenido>) respaldo.buscar(subcadena, respaldoToken);
 		}
 		return list;
 	}

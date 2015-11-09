@@ -32,6 +32,7 @@ public class Emisora extends Contenido {
 		}else{
 			listaReproduccion.add(0, contenido);
 		}
+		this.setDuracion(this.obtenerDuracion()+contenido.obtenerDuracion());
 	}
 
 	public void eliminar(Contenido contenido) throws UnexistingContenidoException {

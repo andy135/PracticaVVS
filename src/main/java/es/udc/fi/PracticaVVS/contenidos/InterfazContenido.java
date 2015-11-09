@@ -12,5 +12,4 @@ public interface InterfazContenido {
 	public List<Contenido> buscar(String subcadena) throws CadenaErroneaException;
 	public void agregar(Contenido contenido, Contenido predecesor);
 	public void eliminar(Contenido contenido) throws UnexistingContenidoException;
-	
 }
