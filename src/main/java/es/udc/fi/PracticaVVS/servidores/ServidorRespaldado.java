@@ -17,6 +17,8 @@ public class ServidorRespaldado extends Servidor {
 		this.respaldo = respaldo;
 	}
 
+
+	@Override
 	public List<Contenido> buscar(String subcadena, Token token) throws UnexistingTokenException, CadenaErroneaException {
 		ArrayList<Contenido> list = (ArrayList<Contenido>) super.buscar(subcadena, token);
 		if(list.size()==0 && respaldo!=null){

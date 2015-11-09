@@ -23,8 +23,8 @@ public class Servidor implements InterfazServidor {
 		super();
 		this.nombre = nombre;
 		this.specialToken = specialToken;
-		this.contenidos = new ArrayList();
-		this.activeTokens = new ArrayList();
+		this.contenidos = new ArrayList<Contenido>();
+		this.activeTokens = new ArrayList<Token>();
 	}
 
 	public String obtenerNombre() {
@@ -80,7 +80,7 @@ public class Servidor implements InterfazServidor {
 
 	public List<Contenido> buscar(String subcadena, Token token)
 			throws UnexistingTokenException, CadenaErroneaException {
-		ArrayList<Contenido> list = new ArrayList();
+		ArrayList<Contenido> list = new ArrayList<Contenido>();
 		if (subcadena == null) {
 			throw new CadenaErroneaException();
 		}
@@ -90,7 +90,7 @@ public class Servidor implements InterfazServidor {
 					list.add(c);
 				}
 			}
-			if (token.getCount() <= 0) {// A�adimos publicidad de ser necesario
+			if (token.getCount() <= 0) {// Anadimos publicidad de ser necesario
 				for (int i = 0; i < list.size(); i += 3) {
 					if (i < list.size()) {
 						list.add(new Anuncio());

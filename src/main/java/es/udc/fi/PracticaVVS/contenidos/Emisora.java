@@ -8,7 +8,7 @@ import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
 
 public class Emisora extends Contenido {
 
-	private List<Contenido> listaReproduccion = new ArrayList();
+	private List<Contenido> listaReproduccion = new ArrayList<Contenido>();
 	
 	public List<Contenido> obtenerListaReproduccion() {
 		return listaReproduccion;
@@ -16,7 +16,7 @@ public class Emisora extends Contenido {
 
 	public List<Contenido> buscar(String subcadena) throws CadenaErroneaException {
 		if(subcadena==null) throw new CadenaErroneaException();
-		ArrayList<Contenido> list = new ArrayList();
+		ArrayList<Contenido> list = new ArrayList<Contenido>();
 		for(Contenido c: listaReproduccion){
 			if(c.obtenerTitulo().contains(subcadena)){
 				list.add(c);

@@ -1,5 +1,6 @@
 package es.udc.fi.PracticaVVS.contenidos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Anuncio extends Contenido {	
@@ -20,7 +21,9 @@ public class Anuncio extends Contenido {
 	}
 
 	public List<Contenido> obtenerListaReproduccion() {
-		return null;
+		ArrayList<Contenido> lista = new ArrayList<Contenido>();
+		lista.add(this);
+		return lista;
 	}
 	
 }
