@@ -16,14 +16,14 @@ public class ServidorSimple implements Servidor {
 
 	private String nombre;
 	private final Token specialToken;
-	private List<Contenido> contenidos;
+	private List<Contenido> Contenidos;
 	private List<Token> activeTokens;
 
 	public ServidorSimple(String nombre, Token specialToken) {
 		super();
 		this.nombre = nombre;
 		this.specialToken = specialToken;
-		this.contenidos = new ArrayList<Contenido>();
+		this.Contenidos = new ArrayList<Contenido>();
 		this.activeTokens = new ArrayList<Token>();
 	}
 
@@ -52,24 +52,24 @@ public class ServidorSimple implements Servidor {
 		}
 	}
 
-	public void agregar(Contenido contenido, Token token)
+	public void agregar(Contenido Contenido, Token token)
 			throws UnexistingTokenException {
 		if (token.equals(specialToken)) { // Comprueba que el token sea el
 											// correcto
-			contenidos.add(contenido);
+			Contenidos.add(Contenido);
 		} else {
 			throw new UnexistingTokenException();
 		}
 	}
 
-	public void eliminar(Contenido contenido, Token token)
+	public void eliminar(Contenido Contenido, Token token)
 			throws UnexistingTokenException, UnexistingContenidoException {
 
 		if (token.equals(specialToken)) { // Comprueba que el token sea el
 											// correcto
-			if (contenidos.contains(contenido)) { // Comprueba que el contenido
+			if (Contenidos.contains(Contenido)) { // Comprueba que el contenido
 													// exista
-				contenidos.remove(contenido);
+				Contenidos.remove(Contenido);
 			} else {
 				throw new UnexistingContenidoException();
 			}
@@ -85,7 +85,7 @@ public class ServidorSimple implements Servidor {
 			throw new CadenaErroneaException();
 		}
 		if (activeTokens.contains(token)) { // Comprobamos que el token existe
-			for (Contenido c : contenidos) { // Buscamos el contenido deseado
+			for (Contenido c : Contenidos) { // Buscamos el contenido deseado
 				if (c.obtenerTitulo().contains(subcadena)) {
 					list.add(c);
 				}

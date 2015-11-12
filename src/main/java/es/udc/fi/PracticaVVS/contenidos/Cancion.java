@@ -3,16 +3,22 @@ package es.udc.fi.PracticaVVS.contenidos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cancion extends Contenido {
+import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
+
+public class Cancion extends ContenidoSimple {
+
+	public Cancion(String titulo, long duracion) {
+		super(titulo, duracion);
+	}
 
 	public List<Contenido> buscar(String subcadena) {
 		return null;
 	}
 
-	public void agregar(Contenido contenido, Contenido predecesor) {
+	public void agregar(Contenido contenidoSimple, Contenido predecesor) {
 	}
 
-	public void eliminar(Contenido contenido) {		
+	public void eliminar(Contenido contenidoSimple) {		
 	}
 
 	public List<Contenido> obtenerListaReproduccion() {

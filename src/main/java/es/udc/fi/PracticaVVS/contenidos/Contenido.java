@@ -1,24 +1,15 @@
 package es.udc.fi.PracticaVVS.contenidos;
 
-public abstract class Contenido implements InterfazContenido{
-	
-	private String titulo;
-	private long duracion;
+import java.util.List;
 
-	public String obtenerTitulo() {
-		return titulo;
-	}
+import es.udc.fi.PracticaVVS.utiles.CadenaErroneaException;
+import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
 
-	public long obtenerDuracion() {
-		return duracion;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	public void setDuracion(long duracion) {
-		this.duracion = duracion;
-	}
-
+public interface Contenido {	
+	public String obtenerTitulo();
+	public long obtenerDuracion();
+	public List<Contenido> obtenerListaReproduccion();
+	public List<Contenido> buscar(String subcadena) throws CadenaErroneaException;
+	public void agregar(Contenido contenidoSimple, Contenido predecesor);
+	public void eliminar(Contenido contenidoSimple) throws UnexistingContenidoException;
 }

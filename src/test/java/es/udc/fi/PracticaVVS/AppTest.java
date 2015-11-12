@@ -51,11 +51,10 @@ public class AppTest {
 	@Test
 	public void testAgregarBuscar() throws UnexistingTokenException,
 			CadenaErroneaException, UnexistingContenidoException {
-		Contenido contenido = new Cancion();
+		Contenido Contenido = new Cancion("Cancion1",1);
 		Token token = servidorSimple.alta();
-		contenido.setTitulo("Cancion1");
-		servidorSimple.agregar(contenido, specialToken);
-		assertTrue(servidorSimple.buscar("Ca", token).contains(contenido));
+		servidorSimple.agregar(Contenido, specialToken);
+		assertTrue(servidorSimple.buscar("Ca", token).contains(Contenido));
 	}
 	
 	@Test
@@ -64,17 +63,14 @@ public class AppTest {
 		
 		Token token = servidorSimple.alta();
 		
-		Contenido contenido = new Cancion();
-		Contenido contenido1 = new Cancion();
-		Contenido contenido2 = new Cancion();
-		contenido.setTitulo("Cancion1");
-		contenido1.setTitulo("Cancion2");
-		contenido2.setTitulo("asd");		
-		servidorSimple.agregar(contenido, specialToken);		
+		Contenido Contenido = new Cancion("Cancion1",1);
+		Contenido contenido1 = new Cancion("Cancion2",1);
+		Contenido contenido2 = new Cancion("asd",1);		
+		servidorSimple.agregar(Contenido, specialToken);		
 		servidorSimple.agregar(contenido1, specialToken);
 		servidorSimple.agregar(contenido2, specialToken);
 		
-		assertTrue(servidorSimple.buscar("Ca", token).contains(contenido));
+		assertTrue(servidorSimple.buscar("Ca", token).contains(Contenido));
 		assertTrue(servidorSimple.buscar("Ca", token).contains(contenido1));
 		assertFalse(servidorSimple.buscar("Ca", token).contains(contenido2));
 	}
@@ -82,22 +78,20 @@ public class AppTest {
 	@Test
 	public void testBuscarConPublicidad() throws UnexistingTokenException,
 			CadenaErroneaException, UnexistingContenidoException {
-		Contenido contenido = new Cancion();
+		Contenido Contenido = new Cancion("Cancion1",3);
 		Token token = servidorSimple.alta();
 		token.setCount(0);
-		contenido.setTitulo("Cancion1");
-		servidorSimple.agregar(contenido, specialToken);
+		servidorSimple.agregar(Contenido, specialToken);
 		assertTrue(servidorSimple.buscar("Ca", token).size()==2);
 	}
 	
 	@Test
 	public void testBuscarEnRespaldo() throws UnexistingTokenException,
 			CadenaErroneaException, UnexistingContenidoException {
-		Contenido contenido = new Cancion();
+		Contenido Contenido = new Cancion("Cancion1",3);
 		Token token = respaldo.alta();
-		contenido.setTitulo("Cancion1");
-		servidorSimple.agregar(contenido, specialToken);
-		assertTrue(respaldo.buscar("Ca", token).contains(contenido));
+		servidorSimple.agregar(Contenido, specialToken);
+		assertTrue(respaldo.buscar("Ca", token).contains(Contenido));
 	}
 	
 	@Test(expected = UnexistingTokenException.class)
@@ -136,11 +130,9 @@ public class AppTest {
 	public void testObtenerTitulo(){
 		Contenido c = new Anuncio();
 		assertEquals(c.obtenerTitulo(),"PUBLICIDAD");
-		c = new Cancion();
-		c.setTitulo("HOLA");
+		c = new Cancion("HOLA",4);
 		assertEquals(c.obtenerTitulo(),"HOLA");
-		c = new Emisora();
-		c.setTitulo("HOLA");
+		c = new Emisora("HOLA");
 		assertEquals(c.obtenerTitulo(),"HOLA");
 	}
 	
@@ -148,10 +140,9 @@ public class AppTest {
 	public void testObtenerDuracion(){
 		Contenido a = new Anuncio();
 		assertEquals(a.obtenerDuracion(),5);
-		Contenido c = new Cancion();
-		c.setDuracion(3);
+		Contenido c = new Cancion("H",3);
 		assertEquals(c.obtenerDuracion(),3);
-		Contenido e = new Emisora();
+		Contenido e = new Emisora("E");
 		e.agregar(c, null);
 		e.agregar(a, null);
 		assertEquals(e.obtenerDuracion(),8);
@@ -160,9 +151,8 @@ public class AppTest {
 	@Test
 	public void testObtenerListaReproduccion(){
 		Contenido a = new Anuncio();
-		Contenido c = new Cancion();
-		c.setDuracion(3);
-		Contenido e = new Emisora();
+		Contenido c = new Cancion("HOLA",3);
+		Contenido e = new Emisora("E");
 		e.agregar(c, null);
 		e.agregar(a, null);
 		assertEquals(e.obtenerListaReproduccion().size(),2);
@@ -170,18 +160,13 @@ public class AppTest {
 	
 	@Test
 	public void testAgregarBuscarEliminarContenidoEnEmisora() throws UnexistingTokenException, CadenaErroneaException, UnexistingContenidoException{
-		Contenido e = new Emisora();
-		e.setTitulo("Emisora1");
+		Contenido e = new Emisora("Emisora1");
 		
 		// Agregar
 		
-		Contenido c1 = new Cancion();
-		c1.setDuracion(3);
-		c1.setTitulo("Cancion 1");
+		Contenido c1 = new Cancion("Cancion 1", 3);
 		
-		Contenido c2 = new Cancion();
-		c2.setDuracion(4);
-		c2.setTitulo("Cancion 2");
+		Contenido c2 = new Cancion("Cancion 2",4);
 		
 		e.agregar(c1, null);
 		e.agregar(c2, c1);
