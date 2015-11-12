@@ -1,4 +1,5 @@
 # PracticaVVS
+[![Build Status](https://travis-ci.org/andy135/PracticaVVS.svg?branch=master)](https://travis-ci.org/andy135/PracticaVVS)
 
 Práctica de VVS 2015-1016.
 
