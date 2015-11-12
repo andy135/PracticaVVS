@@ -12,7 +12,11 @@ public class Cancion extends ContenidoSimple {
 	}
 
 	public List<Contenido> buscar(String subcadena) {
-		return null;
+		ArrayList<Contenido> lista = new ArrayList<Contenido>();
+                if (super.obtenerTitulo().contains(subcadena)){
+			lista.add(this);
+		}
+		return lista;
 	}
 
 	public void agregar(Contenido contenidoSimple, Contenido predecesor) {
