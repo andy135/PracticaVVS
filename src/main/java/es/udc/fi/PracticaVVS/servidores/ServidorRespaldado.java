@@ -7,12 +7,12 @@ import es.udc.fi.PracticaVVS.contenidos.Contenido;
 import es.udc.fi.PracticaVVS.utiles.CadenaErroneaException;
 import es.udc.fi.PracticaVVS.utiles.Token;
 import es.udc.fi.PracticaVVS.utiles.UnexistingTokenException;
-public class ServidorRespaldado extends Servidor {
+public class ServidorRespaldado extends ServidorSimple {
 
 	private Servidor respaldo;
 	private Token respaldoToken;
 	
-	public ServidorRespaldado(String nombre, Token specialToken, Servidor respaldo) {
+	public ServidorRespaldado(String nombre, Token specialToken, ServidorSimple respaldo) {
 		super(nombre, specialToken);
 		this.respaldo = respaldo;
 	}
