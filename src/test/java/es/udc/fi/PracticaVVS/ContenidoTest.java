@@ -81,6 +81,7 @@ public class ContenidoTest {
 		e.eliminar(c1);
 		List<Contenido> r2 = e.buscar("nc");
 
+		assertEquals(4, e.obtenerDuracion());
 		assertTrue(r2.size() == 1);
 
 	}
@@ -104,8 +105,8 @@ public class ContenidoTest {
 	@Test(expected = DuracionErroneaCancionException.class)
 	public void testCancionDuracionErronea()
 			throws DuracionErroneaCancionException {
-		new Cancion("Cancion 1", 0);		
+		new Cancion("Cancion 1", 0);
 	}
-	
+
 	// Fin Pruebas de Valores Frontera: Duración Canción
 }

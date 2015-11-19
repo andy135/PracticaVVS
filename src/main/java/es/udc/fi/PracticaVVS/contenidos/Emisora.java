@@ -9,21 +9,23 @@ import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
 public class Emisora extends ContenidoSimple {
 
 	private List<Contenido> listaReproduccion;
-		
+
 	public Emisora(String titulo) {
 		super(titulo, 0);
 		this.listaReproduccion = new ArrayList<Contenido>();
 	}
-	
+
 	public List<Contenido> obtenerListaReproduccion() {
 		return listaReproduccion;
 	}
 
-	public List<Contenido> buscar(String subcadena) throws CadenaErroneaException {
-		if(subcadena==null) throw new CadenaErroneaException();
+	public List<Contenido> buscar(String subcadena)
+			throws CadenaErroneaException {
+		if (subcadena == null)
+			throw new CadenaErroneaException();
 		ArrayList<Contenido> list = new ArrayList<Contenido>();
-		for(Contenido c: listaReproduccion){
-			if(c.obtenerTitulo().contains(subcadena)){
+		for (Contenido c : listaReproduccion) {
+			if (c.obtenerTitulo().contains(subcadena)) {
 				list.add(c);
 			}
 		}
@@ -32,18 +34,23 @@ public class Emisora extends ContenidoSimple {
 
 	public void agregar(Contenido contenidoSimple, Contenido predecesor) {
 		int pos = listaReproduccion.indexOf(predecesor);
-		if(pos>=0){
-			listaReproduccion.add(pos+1,contenidoSimple);
-		}else{
+		if (pos >= 0) {
+			listaReproduccion.add(pos + 1, contenidoSimple);
+		} else {
 			listaReproduccion.add(0, contenidoSimple);
 		}
-		this.setDuracion(this.obtenerDuracion()+contenidoSimple.obtenerDuracion());
+		this.setDuracion(this.obtenerDuracion()
+				+ contenidoSimple.obtenerDuracion());
 	}
 
-	public void eliminar(Contenido contenidoSimple) throws UnexistingContenidoException {
-		if(listaReproduccion.contains(contenidoSimple)){
+	public void eliminar(Contenido contenidoSimple)
+			throws UnexistingContenidoException {
+		if (listaReproduccion.contains(contenidoSimple)) {
 			listaReproduccion.remove(contenidoSimple);
-		}else throw new UnexistingContenidoException();	
+			this.setDuracion(this.obtenerDuracion()
+					- contenidoSimple.obtenerDuracion());
+		} else
+			throw new UnexistingContenidoException();
 	}
 
 }
