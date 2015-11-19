@@ -16,14 +16,14 @@ public class ServidorSimple implements Servidor {
 
 	private String nombre;
 	private final Token specialToken;
-	private List<Contenido> Contenidos;
+	private List<Contenido> contenidos;
 	private List<Token> activeTokens;
 
 	public ServidorSimple(String nombre, Token specialToken) {
 		super();
 		this.nombre = nombre;
 		this.specialToken = specialToken;
-		this.Contenidos = new ArrayList<Contenido>();
+		this.contenidos = new ArrayList<Contenido>();
 		this.activeTokens = new ArrayList<Token>();
 	}
 
@@ -56,7 +56,7 @@ public class ServidorSimple implements Servidor {
 			throws UnexistingTokenException {
 		if (token.equals(specialToken)) { // Comprueba que el token sea el
 											// correcto
-			Contenidos.add(Contenido);
+			contenidos.add(Contenido);
 		} else {
 			throw new UnexistingTokenException();
 		}
@@ -67,9 +67,9 @@ public class ServidorSimple implements Servidor {
 
 		if (token.equals(specialToken)) { // Comprueba que el token sea el
 											// correcto
-			if (Contenidos.contains(Contenido)) { // Comprueba que el contenido
+			if (contenidos.contains(Contenido)) { // Comprueba que el contenido
 													// exista
-				Contenidos.remove(Contenido);
+				contenidos.remove(Contenido);
 			} else {
 				throw new UnexistingContenidoException();
 			}
@@ -85,7 +85,7 @@ public class ServidorSimple implements Servidor {
 			throw new CadenaErroneaException();
 		}
 		if (activeTokens.contains(token)) { // Comprobamos que el token existe
-			for (Contenido c : Contenidos) { // Buscamos el contenido deseado
+			for (Contenido c : contenidos) { // Buscamos el contenido deseado
 				if (c.obtenerTitulo().contains(subcadena)) {
 					list.add(c);
 				}

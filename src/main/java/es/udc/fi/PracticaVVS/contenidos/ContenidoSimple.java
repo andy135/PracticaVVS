@@ -1,12 +1,11 @@
 package es.udc.fi.PracticaVVS.contenidos;
 
-public abstract class ContenidoSimple implements Contenido{
-	
+public abstract class ContenidoSimple implements Contenido {
+
 	private String titulo;
 	private long duracion;
-	
-	public ContenidoSimple(String titulo, long duracion) {
-		super();
+
+	public ContenidoSimple(String titulo, long duracion) {		
 		this.titulo = titulo;
 		this.duracion = duracion;
 	}
@@ -19,8 +18,8 @@ public abstract class ContenidoSimple implements Contenido{
 		return duracion;
 	}
 
-	public void setDuracion(long duracion){
+	public void setDuracion(long duracion) {
 		this.duracion = duracion;
 	}
-	
+
 }
