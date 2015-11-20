@@ -3,12 +3,17 @@ package es.udc.fi.PracticaVVS.contenidos;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.udc.fi.PracticaVVS.utiles.DuracionErroneaCancionException;
 import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
 
 public class Cancion extends ContenidoSimple {
 
-	public Cancion(String titulo, long duracion) {
-		super(titulo, duracion);
+	public Cancion(String titulo, long duracion)
+			throws DuracionErroneaCancionException {
+		super(titulo, Math.abs(duracion));
+		if (duracion == 0) {
+			throw new DuracionErroneaCancionException();
+		}
 	}
 
 	public List<Contenido> buscar(String subcadena) {
