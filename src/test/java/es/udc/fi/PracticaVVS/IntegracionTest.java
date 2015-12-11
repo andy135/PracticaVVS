@@ -8,7 +8,6 @@ import es.udc.fi.PracticaVVS.contenidos.Anuncio;
 import es.udc.fi.PracticaVVS.contenidos.Cancion;
 import es.udc.fi.PracticaVVS.contenidos.Contenido;
 import es.udc.fi.PracticaVVS.contenidos.Emisora;
-import es.udc.fi.PracticaVVS.servidores.ServidorRespaldado;
 import es.udc.fi.PracticaVVS.servidores.ServidorSimple;
 import es.udc.fi.PracticaVVS.utiles.CadenaErroneaException;
 import es.udc.fi.PracticaVVS.utiles.DuracionErroneaCancionException;
@@ -18,11 +17,9 @@ import es.udc.fi.PracticaVVS.utiles.UnexistingTokenException;
 
 public class IntegracionTest {
 
-	private Token specialToken = new Token("Especial");
-	private ServidorSimple servidorSimple = new ServidorSimple("Prueba",
+	private final Token specialToken = new Token("Especial");
+	private final ServidorSimple servidorSimple = new ServidorSimple("Prueba",
 			specialToken);
-	private ServidorSimple respaldo = new ServidorRespaldado("Respaldado",
-			specialToken, servidorSimple);
 
 	//Inicio Tests Particiones Equivalentes: Contenido
 	
