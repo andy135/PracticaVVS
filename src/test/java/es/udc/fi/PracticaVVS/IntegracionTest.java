@@ -24,8 +24,7 @@ public class IntegracionTest {
 	//Inicio Tests Particiones Equivalentes: Contenido
 	
 	@Test
-	public void testAgregarYBuscarCancion() throws UnexistingTokenException,
-			CadenaErroneaException, UnexistingContenidoException, DuracionErroneaCancionException {
+	public void testAgregarYBuscarCancion() throws Exception {
 		Contenido Contenido = new Cancion("Cancion1", 1);
 		Token token = servidorSimple.alta();
 		servidorSimple.agregar(Contenido, specialToken);
@@ -33,8 +32,7 @@ public class IntegracionTest {
 	}
 	
 	@Test
-	public void testAgregarYBuscarAnuncio() throws UnexistingTokenException,
-			CadenaErroneaException, UnexistingContenidoException {
+	public void testAgregarYBuscarAnuncio() throws Exception {
 		Contenido Contenido = new Anuncio();
 		Token token = servidorSimple.alta();
 		servidorSimple.agregar(Contenido, specialToken);
@@ -42,8 +40,7 @@ public class IntegracionTest {
 	}
 	
 	@Test
-	public void testAgregarYBuscarEmisora() throws UnexistingTokenException,
-			CadenaErroneaException, UnexistingContenidoException {
+	public void testAgregarYBuscarEmisora() throws Exception {
 		Contenido Contenido = new Emisora("Europa FM");
 		Token token = servidorSimple.alta();
 		servidorSimple.agregar(Contenido, specialToken);

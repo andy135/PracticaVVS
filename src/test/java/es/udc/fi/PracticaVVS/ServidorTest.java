@@ -47,14 +47,12 @@ public class ServidorTest {
 	}
 
 	@Test(expected = CadenaErroneaException.class)
-	public void testBuscarCadenaErronea() throws UnexistingTokenException,
-			CadenaErroneaException {
+	public void testBuscarCadenaErronea() throws Exception{
 		servidorSimple.buscar(null, new Token());
 	}
 
 	@Test(expected = UnexistingTokenException.class)
-	public void testBuscarTokenErroneo() throws UnexistingTokenException,
-			CadenaErroneaException {
+	public void testBuscarTokenErroneo() throws Exception{
 		servidorSimple.buscar("PUBLICIDAD", new Token());
 	}
 
@@ -65,16 +63,13 @@ public class ServidorTest {
 	}
 
 	@Test(expected = UnexistingContenidoException.class)
-	public void testEliminarContenidoErroneo() throws UnexistingTokenException,
-			UnexistingContenidoException {
+	public void testEliminarContenidoErroneo() throws Exception{
 		Anuncio anuncio = new Anuncio();
 		servidorSimple.eliminar(anuncio, specialToken);
 	}
 	
 	@Test
-	public void testBuscarConPublicidad() throws UnexistingTokenException,
-			CadenaErroneaException, UnexistingContenidoException,
-			DuracionErroneaCancionException {
+	public void testBuscarConPublicidad() throws Exception{
 		Contenido Contenido = new Cancion("Cancion1", 3);
 		Token token = servidorSimple.alta();
 		token.setCount(0);
@@ -93,9 +88,7 @@ public class ServidorTest {
 	//public void testAgregarYBuscar eliminado
 
 	@Test
-	public void testAgregarBuscarVarios() throws UnexistingTokenException,
-			CadenaErroneaException, UnexistingContenidoException,
-			DuracionErroneaCancionException {
+	public void testAgregarBuscarVarios() throws Exception{
 
 		Token token = servidorSimple.alta();
 
@@ -112,9 +105,7 @@ public class ServidorTest {
 	}	
 
 	@Test
-	public void testBuscarEnRespaldo() throws UnexistingTokenException,
-			CadenaErroneaException, UnexistingContenidoException,
-			DuracionErroneaCancionException {
+	public void testBuscarEnRespaldo() throws Exception{
 		Contenido Contenido = new Cancion("Cancion1", 3);
 		Token token = respaldo.alta();
 		servidorSimple.agregar(Contenido, specialToken);

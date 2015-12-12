@@ -8,6 +8,8 @@ import java.util.List;
 import es.udc.fi.PracticaVVS.contenidos.Anuncio;
 import es.udc.fi.PracticaVVS.contenidos.Contenido;
 import es.udc.fi.PracticaVVS.utiles.CadenaErroneaException;
+import es.udc.fi.PracticaVVS.utiles.DuracionErroneaCancionException;
+import es.udc.fi.PracticaVVS.utiles.TituloErroneoException;
 import es.udc.fi.PracticaVVS.utiles.Token;
 import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
 import es.udc.fi.PracticaVVS.utiles.UnexistingTokenException;
@@ -79,7 +81,7 @@ public class ServidorSimple implements Servidor {
 	}
 
 	public List<Contenido> buscar(String subcadena, Token token)
-			throws UnexistingTokenException, CadenaErroneaException {
+			throws UnexistingTokenException, CadenaErroneaException, DuracionErroneaCancionException, TituloErroneoException {
 		ArrayList<Contenido> list = new ArrayList<Contenido>();
 		if (subcadena == null) {
 			throw new CadenaErroneaException();

@@ -5,6 +5,8 @@ import java.util.List;
 
 import es.udc.fi.PracticaVVS.contenidos.Contenido;
 import es.udc.fi.PracticaVVS.utiles.CadenaErroneaException;
+import es.udc.fi.PracticaVVS.utiles.DuracionErroneaCancionException;
+import es.udc.fi.PracticaVVS.utiles.TituloErroneoException;
 import es.udc.fi.PracticaVVS.utiles.Token;
 import es.udc.fi.PracticaVVS.utiles.UnexistingTokenException;
 public class ServidorRespaldado extends ServidorSimple {
@@ -19,7 +21,7 @@ public class ServidorRespaldado extends ServidorSimple {
 
 
 	@Override
-	public List<Contenido> buscar(String subcadena, Token token) throws UnexistingTokenException, CadenaErroneaException {
+	public List<Contenido> buscar(String subcadena, Token token) throws UnexistingTokenException, CadenaErroneaException, DuracionErroneaCancionException, TituloErroneoException {
 		ArrayList<Contenido> list = (ArrayList<Contenido>) super.buscar(subcadena, token);
 		if(list.isEmpty() && respaldo!=null){
 			if(respaldoToken==null||respaldoToken.getCount()==0){

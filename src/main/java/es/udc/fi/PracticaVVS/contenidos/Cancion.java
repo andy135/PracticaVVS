@@ -3,22 +3,24 @@ package es.udc.fi.PracticaVVS.contenidos;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
+import es.udc.fi.PracticaVVS.utiles.CadenaErroneaException;
 import es.udc.fi.PracticaVVS.utiles.DuracionErroneaCancionException;
+import es.udc.fi.PracticaVVS.utiles.TituloErroneoException;
 import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
 
 public class Cancion extends ContenidoSimple {
 
-	public Cancion(String titulo, long duracion)
-			throws DuracionErroneaCancionException {
-		super(titulo, Math.abs(duracion));
-		if (duracion == 0) {
-			throw new DuracionErroneaCancionException();
-		}
+	public Cancion(@Nonnull String titulo, long duracion)
+			throws DuracionErroneaCancionException, TituloErroneoException {
+		super(titulo, duracion);
 	}
 
-	public List<Contenido> buscar(String subcadena) {
+	public List<Contenido> buscar(@Nonnull String subcadena) throws CadenaErroneaException {
+		if(subcadena.equals(null)) throw new CadenaErroneaException();
 		ArrayList<Contenido> lista = new ArrayList<Contenido>();
-                if (super.obtenerTitulo().contains(subcadena)){
+        if (super.obtenerTitulo().contains(subcadena)){
 			lista.add(this);
 		}
 		return lista;
