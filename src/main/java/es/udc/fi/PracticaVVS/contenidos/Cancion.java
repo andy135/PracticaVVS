@@ -12,13 +12,12 @@ import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
 
 public class Cancion extends ContenidoSimple {
 
-	public Cancion(@Nonnull String titulo, long duracion)
-			throws DuracionErroneaCancionException, TituloErroneoException {
+	public Cancion(@Nonnull String titulo, long duracion)throws DuracionErroneaCancionException, TituloErroneoException {
 		super(titulo, duracion);
 	}
 
 	public List<Contenido> buscar(@Nonnull String subcadena) throws CadenaErroneaException {
-		if(subcadena.equals(null)) throw new CadenaErroneaException();
+		if(subcadena == null) throw new CadenaErroneaException();
 		ArrayList<Contenido> lista = new ArrayList<Contenido>();
         if (super.obtenerTitulo().contains(subcadena)){
 			lista.add(this);

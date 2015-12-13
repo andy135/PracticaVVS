@@ -19,57 +19,84 @@ import es.udc.fi.PracticaVVS.utiles.UnexistingTokenException;
 
 public class ServidorTest {
 	private Token specialToken = new Token("Especial");
-	private ServidorSimple servidorSimple = new ServidorSimple("Prueba",
-			specialToken);
-	private ServidorSimple respaldo = new ServidorRespaldado("Respaldado",
-			specialToken, servidorSimple);
-
-	// Tests Servidores
-
-	@Test
-	public void testAltaBaja() throws UnexistingTokenException {
-		Token tokenCreado = servidorSimple.alta();
-		assertTrue(servidorSimple.existeToken(tokenCreado));
-		servidorSimple.baja(tokenCreado);
-		assertFalse(servidorSimple.existeToken(tokenCreado));
-	}
-
-	// Inicio Cobertura de instrucciones
+	//private ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
+	//private ServidorSimple respaldo = new ServidorRespaldado("Respaldado",specialToken, servidorSimple);
 	
-	@Test(expected = UnexistingTokenException.class)
-	public void testBajaTokenErroneo() throws UnexistingTokenException {
+	@Test
+	public void testObtenerNombre() {
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
+		ServidorSimple respaldo = new ServidorRespaldado("Respaldado",specialToken, servidorSimple);
+		assertEquals("Prueba", servidorSimple.obtenerNombre());
+		assertEquals("Respaldado", respaldo.obtenerNombre());
+	}
+	
+	@Test
+	public void testExisteToken(){
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba", specialToken);
+		Token t = servidorSimple.alta();
+		assertTrue(servidorSimple.existeToken(t));
+		assertFalse(servidorSimple.existeToken(new Token()));
+	}
+	
+	@Test
+	public void testAltaBajaExisteToken() throws UnexistingTokenException{
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba", specialToken);
+		Token t = servidorSimple.alta();
+		assertTrue(servidorSimple.existeToken(t));
+		servidorSimple.baja(t);
+		assertFalse(servidorSimple.existeToken(t));
+	}
+	
+	@Test(expected=UnexistingTokenException.class)
+	public void testBajaUnexistingToken() throws UnexistingTokenException{
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba", specialToken);
 		servidorSimple.baja(new Token());
 	}
 
+	// Inicio Cobertura de instrucciones
+
 	@Test(expected = UnexistingTokenException.class)
-	public void testAgregarTokenErroneo() throws UnexistingTokenException {
-		servidorSimple.agregar(null, new Token());
+	public void testAgregarTokenErroneo() throws Exception {
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
+		Contenido c = new Cancion("hola",5);
+		servidorSimple.agregar(c, new Token());
+	}
+	
+	@Test(expected = UnexistingTokenException.class)
+	public void testAgregarTokenNull() throws Exception {
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
+		Contenido c = new Cancion("hola",5);
+		servidorSimple.agregar(c, null);
+	}
+	
+	@Test
+	public void testAgregar() throws Exception {
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
+		Contenido c = new Cancion("hola",5);
+		servidorSimple.agregar(c, specialToken);
+	}
+	
+	@Test(expected=UnexistingContenidoException.class)
+	public void testAgregarContenidoNull() throws Exception {
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
+		servidorSimple.agregar(null, specialToken);
 	}
 
 	@Test(expected = CadenaErroneaException.class)
 	public void testBuscarCadenaErronea() throws Exception{
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
 		servidorSimple.buscar(null, new Token());
 	}
 
 	@Test(expected = UnexistingTokenException.class)
 	public void testBuscarTokenErroneo() throws Exception{
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
 		servidorSimple.buscar("PUBLICIDAD", new Token());
 	}
 
-	@Test(expected = UnexistingTokenException.class)
-	public void testEliminarTokenErroneo() throws UnexistingTokenException,
-			UnexistingContenidoException {
-		servidorSimple.eliminar(null, new Token());
-	}
-
-	@Test(expected = UnexistingContenidoException.class)
-	public void testEliminarContenidoErroneo() throws Exception{
-		Anuncio anuncio = new Anuncio();
-		servidorSimple.eliminar(anuncio, specialToken);
-	}
-	
 	@Test
-	public void testBuscarConPublicidad() throws Exception{
+	public void testBuscarTokenVacio() throws Exception{
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
 		Contenido Contenido = new Cancion("Cancion1", 3);
 		Token token = servidorSimple.alta();
 		token.setCount(0);
@@ -77,19 +104,9 @@ public class ServidorTest {
 		assertTrue(servidorSimple.buscar("Ca", token).size() == 2);
 	}
 	
-	// Fin Cobertura de instrucciones
-	
-	@Test
-	public void testObtenerNombre() {
-		assertEquals("Prueba", servidorSimple.obtenerNombre());
-		assertEquals("Respaldado", respaldo.obtenerNombre());
-	}
-	
-	//public void testAgregarYBuscar eliminado
-
 	@Test
 	public void testAgregarBuscarVarios() throws Exception{
-
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);		
 		Token token = servidorSimple.alta();
 
 		Contenido Contenido = new Cancion("Cancion1", 1);
@@ -103,13 +120,85 @@ public class ServidorTest {
 		assertTrue(servidorSimple.buscar("Ca", token).contains(contenido1));
 		assertFalse(servidorSimple.buscar("Ca", token).contains(contenido2));
 	}	
+	
+	@Test(expected = UnexistingTokenException.class)
+	public void testEliminarTokenErroneo() throws Exception{
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
+		Anuncio anuncio = new Anuncio();
+		servidorSimple.eliminar(anuncio, new Token());
+	}
+	
+	@Test(expected = UnexistingTokenException.class)
+	public void testEliminarTokenNull() throws Exception{
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
+		Anuncio anuncio = new Anuncio();
+		servidorSimple.eliminar(anuncio, null);
+	}
 
+	@Test(expected = UnexistingContenidoException.class)
+	public void testEliminarContenidoErroneo() throws Exception{
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);
+		Anuncio anuncio = new Anuncio();
+		servidorSimple.eliminar(anuncio, specialToken);
+	}
+	
 	@Test
-	public void testBuscarEnRespaldo() throws Exception{
-		Contenido Contenido = new Cancion("Cancion1", 3);
-		Token token = respaldo.alta();
-		servidorSimple.agregar(Contenido, specialToken);
-		assertTrue(respaldo.buscar("Ca", token).contains(Contenido));
+	public void testEliminar() throws Exception{
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);		
+		Token token = servidorSimple.alta();
+
+		Contenido contenido = new Cancion("Cancion1", 1);
+		servidorSimple.agregar(contenido, specialToken);
+		servidorSimple.eliminar(contenido, specialToken);
+		
+		assertFalse(servidorSimple.buscar("Ca", token).contains(contenido));
+	}
+	
+	//Tests servidores respaldo
+	
+	@Test
+	public void testBuscarRespaldoNull() throws Exception{
+		ServidorSimple respaldado = new ServidorRespaldado("Respaldado",specialToken, null);
+		Contenido contenido = new Cancion("Cancion1", 1);
+		respaldado.agregar(contenido, specialToken);
+		assertEquals(respaldado.buscar("Ca", respaldado.alta()).size(),1);
+		assertEquals(respaldado.buscar("po", respaldado.alta()).size(),0);
+	}
+	
+	@Test
+	public void testAgregarBuscarVariosRespaldado() throws Exception{
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);		
+		ServidorSimple respaldado = new ServidorRespaldado("Respaldado",specialToken, servidorSimple);
+		Token token = respaldado.alta();
+
+		Contenido contenido = new Cancion("Cancion1", 1);
+		Contenido contenido1 = new Cancion("Cancion2", 1);
+		Contenido contenido2 = new Cancion("asd", 1);
+		servidorSimple.agregar(contenido, specialToken);
+		respaldado.agregar(contenido1, specialToken);
+		servidorSimple.agregar(contenido2, specialToken);
+
+		assertFalse(respaldado.buscar("Ca", token).contains(contenido));
+		assertTrue(respaldado.buscar("Ca", token).contains(contenido1));
+		assertFalse(respaldado.buscar("Ca", token).contains(contenido2));
 	}	
+	
+	@Test
+	public void testAgregarBuscarVariosRespaldadoVacio() throws Exception{
+		ServidorSimple servidorSimple = new ServidorSimple("Prueba",specialToken);		
+		ServidorSimple respaldado = new ServidorRespaldado("Respaldado",specialToken, servidorSimple);
+		Token token = respaldado.alta();
+
+		Contenido contenido = new Cancion("Cancion1", 1);
+		Contenido contenido1 = new Cancion("Cancion2", 1);
+		Contenido contenido2 = new Cancion("asd", 1);
+		servidorSimple.agregar(contenido, specialToken);
+		servidorSimple.agregar(contenido1, specialToken);
+		servidorSimple.agregar(contenido2, specialToken);
+
+		assertTrue(respaldado.buscar("Ca", token).contains(contenido));
+		assertTrue(respaldado.buscar("Ca", token).contains(contenido1));
+		assertFalse(respaldado.buscar("Ca", token).contains(contenido2));
+	}
 
 }

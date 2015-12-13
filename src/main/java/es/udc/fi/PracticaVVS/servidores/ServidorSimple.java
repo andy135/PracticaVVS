@@ -54,11 +54,13 @@ public class ServidorSimple implements Servidor {
 		}
 	}
 
-	public void agregar(Contenido Contenido, Token token)
-			throws UnexistingTokenException {
-		if (token.equals(specialToken)) { // Comprueba que el token sea el
-											// correcto
-			contenidos.add(Contenido);
+	public void agregar(Contenido contenido, Token token)throws UnexistingTokenException, UnexistingContenidoException {
+		if (token!=null && token.equals(specialToken)) { // Comprueba que el token sea el cprrecto
+			if(contenido!=null){
+				contenidos.add(contenido);
+			}else{
+				throw new UnexistingContenidoException();
+			}
 		} else {
 			throw new UnexistingTokenException();
 		}
@@ -67,7 +69,7 @@ public class ServidorSimple implements Servidor {
 	public void eliminar(Contenido Contenido, Token token)
 			throws UnexistingTokenException, UnexistingContenidoException {
 
-		if (token.equals(specialToken)) { // Comprueba que el token sea el
+		if (token != null && token.equals(specialToken)) { // Comprueba que el token sea el
 											// correcto
 			if (contenidos.contains(Contenido)) { // Comprueba que el contenido
 													// exista

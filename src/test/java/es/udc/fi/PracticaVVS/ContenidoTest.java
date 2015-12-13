@@ -99,9 +99,15 @@ public class ContenidoTest {
 	//Tests Valores frontera para el metodo buscar de Canciones y Anuncios
 	
 	@Test(expected=CadenaErroneaException.class)
-	public void testBuscarCadenaNull() throws CadenaErroneaException, DuracionErroneaCancionException, TituloErroneoException{
+	public void testBuscarCadenaNullAnuncio() throws CadenaErroneaException, DuracionErroneaCancionException, TituloErroneoException{
 		Contenido a = new Anuncio();
 		a.buscar(null);
+	}
+	
+	@Test(expected=CadenaErroneaException.class)
+	public void testBuscarCadenaNullCancion() throws CadenaErroneaException, DuracionErroneaCancionException, TituloErroneoException{
+		Contenido c = new Cancion("hola", 5);
+		c.buscar(null);
 	}
 	
 	@Test

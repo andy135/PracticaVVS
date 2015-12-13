@@ -14,7 +14,7 @@ public interface Servidor {
 	public String obtenerNombre();
 	public Token alta();
 	public void baja(Token token) throws UnexistingTokenException;
-	public void agregar(Contenido Contenido, Token token) throws UnexistingTokenException;
+	public void agregar(Contenido Contenido, Token token) throws UnexistingTokenException, UnexistingContenidoException;
 	public void eliminar(Contenido Contenido, Token token) throws UnexistingTokenException, UnexistingContenidoException;
 	public List<Contenido> buscar(String subcadena, Token token) throws UnexistingTokenException, CadenaErroneaException, DuracionErroneaCancionException, TituloErroneoException;
 }
