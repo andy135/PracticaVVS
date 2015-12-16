@@ -12,7 +12,6 @@ import es.udc.fi.PracticaVVS.contenidos.Contenido;
 import es.udc.fi.PracticaVVS.servidores.ServidorRespaldado;
 import es.udc.fi.PracticaVVS.servidores.ServidorSimple;
 import es.udc.fi.PracticaVVS.utiles.CadenaErroneaException;
-import es.udc.fi.PracticaVVS.utiles.DuracionErroneaCancionException;
 import es.udc.fi.PracticaVVS.utiles.Token;
 import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
 import es.udc.fi.PracticaVVS.utiles.UnexistingTokenException;

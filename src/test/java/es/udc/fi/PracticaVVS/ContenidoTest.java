@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.List;
-
 import org.junit.Test;
 
 import es.udc.fi.PracticaVVS.contenidos.Anuncio;
@@ -16,7 +14,6 @@ import es.udc.fi.PracticaVVS.utiles.CadenaErroneaException;
 import es.udc.fi.PracticaVVS.utiles.DuracionErroneaCancionException;
 import es.udc.fi.PracticaVVS.utiles.TituloErroneoException;
 import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
-import es.udc.fi.PracticaVVS.utiles.UnexistingTokenException;
 
 public class ContenidoTest {
 
