@@ -9,4 +9,4 @@ Colaboradores
   3. Elias Ferreiro Borreiros: elias.ferreiro.borreiros
 
 Diagrama de Clases
-![alt tag](https://raw.githubusercontent.com/andy135/PracticaVVS/master/Diagrama.png)
+![alt tag](https://raw.githubusercontent.com/andy135/PracticaVVS/master/doc/Diagrama.png)

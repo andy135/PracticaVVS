@@ -1,0 +1,243 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This document is based on the template: Large Colored Title Article %
+%                                         Version 1.1 (25/11/12)      %
+%                                                                     %
+% The template was downloaded from: http://www.LaTeXTemplates.com     %
+%                                                                     %
+% Original author:                                                    %
+% Frits Wenneker (http://www.howtotex.com)                            %
+%                                                                     %
+% License:                                                            %
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/) %
+%                                                                     %
+% Author of this version:                                             %
+% Laura M. Castro (http://www.madsgroup.org/staff/laura)              %
+%                                                                     %
+% Original licensing terms are maintained                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[DIV=calc,paper=a4,fontsize=11pt,onecolumn]{scrartcl}	 % A4 paper and 11pt font size
+
+\usepackage[galician]{babel} % Galician language/hyphenation
+\usepackage[utf8]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[svgnames]{xcolor} % Enabling colors by their 'svgnames'
+\usepackage[hang,small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{fix-cm}	 % Custom font sizes - used for the initial letter in the document
+
+\usepackage{sectsty} % Enables custom section titles
+\allsectionsfont{\usefont{OT1}{phv}{b}{n}} % Change the font of all section commands
+
+\usepackage{fancyhdr} % Needed to define custom headers/footers
+\pagestyle{fancy} % Enables the custom headers/footers
+\usepackage{lastpage} % Used to determine the number of pages in the document (for "Page X of Total")
+
+% Headers - all currently empty
+\lhead{}
+\chead{}
+\rhead{}
+
+% Footers
+\lfoot{\textsc{vvs-monitorización-probas}}
+\cfoot{}
+\rfoot{\footnotesize Páxina \thepage\ de \pageref{LastPage}} % "Page 1 of 2"
+
+\renewcommand{\headrulewidth}{0.0pt} % No header rule
+\renewcommand{\footrulewidth}{0.4pt} % Thin footer rule
+
+\definecolor{UDC}{RGB}{206,0,124}
+\definecolor{DarkUDC}{rgb}{0.75,0.75,0.75}
+\definecolor{LightUDC}{RGB}{128,128,128}
+
+\usepackage{lettrine} % Package to accentuate the first letter of the text
+\newcommand{\initial}[1]{ % Defines the command and style for the first letter
+\lettrine[lines=3,lhang=0.3,nindent=0em]{
+\color{UDC}
+{\textsf{#1}}}{}}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\usepackage{titling} % Allows custom title configuration
+
+\newcommand{\HorRule}{\color{UDC} \rule{\linewidth}{1pt}} % Defines the pink horizontal rule around the title
+
+\pretitle{\vspace{-30pt} \begin{flushleft} \HorRule \fontsize{20}{20} \usefont{OT1}{phv}{b}{n} \color{DarkUDC} \selectfont} % Horizontal rule before the title
+
+\title{MONITORIZACIÓN DE PROBAS} % Your article title
+
+\posttitle{\par\end{flushleft}\vskip 0.5em} % Whitespace under the title
+
+\preauthor{\begin{flushleft}\large \lineskip 0.5em \usefont{OT1}{phv}{b}{sl} \color{DarkUDC}} % Author font configuration
+
+\author{Título proxecto: Práctica VVS \\
+        Ref. proxecto: andy135 }
+
+\postauthor{\footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black} % Configuration for the institution name
+\par\end{flushleft}\HorRule} % Horizontal rule after the title
+
+\date{\sffamily Validación e Verificación de Software} % Add a date here if you would like one to appear underneath the title block
+
+%----------------------------------------------------------------------------------------
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,
+            allcolors=UDC}
+
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{hyperref}
+
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hint}[1]{\begin{quote}\itshape #1 \end{quote}}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title
+\thispagestyle{fancy} % Enabling the custom headers/footers for the first page 
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\vspace*{1cm}
+
+\begin{center}
+\small \sffamily
+  \begin{tabular}{|c|c|c|}
+  \hline
+  Data de aprobación & Control de versións & Observacións \\ \hline
+  26/11/2015& 1.0 & Creación inicial do documento\\ \hline
+  & & \\ \hline
+  \end{tabular}
+\end{center}
+
+\vspace{3cm}
+
+\begin{flushright}
+	\large{\textbf{Iago Santos Domínguez}}
+			
+	\large{\textbf{José Andy Quintero Melo}}
+    
+    \large{\textbf{Elias Ferreiros Borreiros}}
+\end{flushright}
+
+\clearpage
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section{Contexto}
+
+\textnormal{O presente documento de monitorización de probas fai referencia a versión basica do proxecto presente en github.}
+
+\section{Estado actual}
+
+\begin{itemize}
+	\item{Funcionalidad 01: Manejo de contenidos: Se han definido una serie de contenidos, entre los que se encuentran:}
+	\begin{itemize}
+		\item{Anuncio, contenido simple del que podremos obtener el título, que siempre será PUBLICIDAD, y la duración, siempre 5.}
+        \item{Canción, contenido simple del que podremos obtener el título y la duración.}
+		\item{Emisora es un caso de contenido del que además podremos obtener la lista de reproducción.}
+	\end{itemize}	
+	Persona responsable de su desarrollo: Andy Quintero Melo.
+	\newline
+	Persona responsable de las pruebas: Elías Ferreiro Borreiros.
+	
+	\item{Funcionalidad 02: Manejo de servidores: Se han definido dos tipos de servidores:}
+	\begin{itemize}
+		\item{Servidor Simple: En él se pueden almacenar una serie de contenidos asi como eliminarlos y buscarlos.}		
+		\item{Servidor Respaldado: Realiza la misma función que un servidor simple salvo en el caso de buscar contenidos en el cual se diferencia al poseer otro servidor que le servirá de respaldo.}
+	\end{itemize}
+	Persona responsable de su desarrollo: Iago Santos Domínguez.	
+	Persona responsable de las pruebas: Elías Ferreiro Borreiros.
+\end{itemize}
+\begin{center}
+\small \sffamily
+\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	Funcionalidad  & Pruebas objetivo & Pruebas preparadas & \% ejecutada & \% superada 
+	\\ \hline
+	01 & 25 & 25 & 100 & 100
+	\\ \hline
+	02 & 19 & 19 & 100 & 100
+	\\ \hline
+\end{tabular}
+\end{center}
+
+\clearpage
+
+\section{Registro de pruebas}
+
+{Tipos de pruebas realizadas hasta el momento:}
+\begin{itemize}
+	\item{Happy testing: Durante la primera semana de testing usamos nuestro sentido común a la hora de hacer pruebas.}
+	\item{Pruebas de caja negra: Al comenzar a adquirir conocimientos sobre la forma de hacer pruebas bien, usamos las siguientes técnicas:}
+	\begin{itemize}
+		\item{Particiones equivalentes}
+		\item{Valores-frontera}
+	\end{itemize}
+	\item{Pruebas de caja blanca: Finalmente para ver de una manera más visual el abarque de código de las pruebas empleamos: }
+	\begin{itemize}
+		\item{Cobertura de instrucciones}
+		\item{Cobertura de ramas}	
+	\end{itemize}
+    \item{Se ha descartado el uso de pruebas automatizadas debido a la simplicidad de los valores frontera y del código en general.}
+\end{itemize}
+
+\clearpage
+
+\section{Registro de errores}
+
+\begin{itemize}
+    \item{Errores en la nomenclatura de las interfaces. \href{https://github.com/andy135/PracticaVVS/issues/2}{\#2} \href{https://github.com/andy135/PracticaVVS/issues/3}{\#3}}
+    \item{Los métodos buscar de Canción y Anuncio tenían una respuesta incorrecta. \href{https://github.com/andy135/PracticaVVS/issues/5}{\#5}}
+    \item{Error en la propagación de los tokens en los servidores respaldados. \href{https://github.com/andy135/PracticaVVS/issues/6}{\#6}}
+    \item{Al añadir los anuncios recuperando canciones de un servidor la publicidad se añadía siempre al principio en lugar de cada tres canciones. \href{https://github.com/andy135/PracticaVVS/issues/7}{\#7}}
+    \item{Al realizar las pruebas de valores frontera en los métodos de los servidores nos dimos cuenta que no contemplábamos parámetros null en la mayoría de ellos. \href{https://github.com/andy135/PracticaVVS/issues/9}{\#9}}
+    \item{Al realizar las pruebas con respecto al contenido Emisora, nos dimos cuenta de que no disminuíamos la duración de la misma al eliminar algún contenido de ella. \href{https://github.com/andy135/PracticaVVS/issues/10}{\#10}}
+    \item{Al realizar las pruebas de valores frontera con respecto a la duración de la canción, nos dimos cuenta de que no contemplábamos los casos en los que se especificara una duración menor o igual a 0. \href{https://github.com/andy135/PracticaVVS/issues/11}{\#11}}     
+    \item{La clase SessionIdentifierGenerator debería ser estática y no lo es.\href{https://github.com/andy135/PracticaVVS/issues/13}{\#13}}
+\end{itemize}
+
+\clearpage
+
+\section{Estadísticas}  
+  \subsection{Errores encontrados diariamente y semanalmente}
+	Tomando como referencia tres semanas de duración del proyecto, podríamos decir que hemos encontrado menos de un error diariamente y un poco más de dos errores semanalmente. Este valor no es muy estable ya que los días en los que nos dedicamos a la realización de las pruebas, se encontraron muchos más errores que en el resto.
+  \subsection{Nivel de progreso en la ejecución de las pruebas.}
+  	Toda la suite de pruebas se ejecuta sin problemas.
+  \subsection{Informe de errores abiertos y cerrados por nivel de criticidad}
+  	\subsubsection{Errores cerrados}
+      \begin{itemize}
+          \item Canciones con duración menor o igual a 0.
+          \item Disminución de la duración de la Emisora al eliminar contenidos de ella.
+          \item Parámetros null en métodos de servidores.
+          \item Publicidad añadida siempre al principio.
+          \item Clase interna no estática.
+      \end{itemize}
+ 	\subsubsection{Errores abiertos}
+    	No tenemos ningún error abierto actualmente.
+  \subsection{Evaluación global del estado de calidad y estabilidad actuales}
+	Podríamos afirmar con confianza que el nivel actual de calidad y de estabilidad es bueno ya que en la suite de pruebas cubrimos casi todas las posibilidades para nuestra aplicación como se puede comprobar en la Cobertura.
+
+\clearpage
+
+\section{Otros aspectos de interés}
+
+Debido a las características del proyecto las herramientas usadas son JUnit (automatización de pruebas), Cobertura (Validar la calidad de nuestras pruebas), FindBugs (pruebas estructurales), Checkstyle (pruebas estructurales) y PMD (pruebas estructurales).
+Hemos decidido no usar herramientas de generación de datos debido a la simplicidad de los valores frontera de nuestros métodos.
+
+\end{document}
