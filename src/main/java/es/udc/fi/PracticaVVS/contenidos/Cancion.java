@@ -8,7 +8,6 @@ import javax.annotation.Nonnull;
 import es.udc.fi.PracticaVVS.utiles.CadenaErroneaException;
 import es.udc.fi.PracticaVVS.utiles.DuracionErroneaCancionException;
 import es.udc.fi.PracticaVVS.utiles.TituloErroneoException;
-import es.udc.fi.PracticaVVS.utiles.UnexistingContenidoException;
 
 public class Cancion extends ContenidoSimple {
 

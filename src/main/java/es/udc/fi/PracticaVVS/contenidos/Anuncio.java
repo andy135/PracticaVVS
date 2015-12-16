@@ -11,8 +11,10 @@ import es.udc.fi.PracticaVVS.utiles.TituloErroneoException;
 
 public class Anuncio extends ContenidoSimple {	
 
+	private static final int duracion = 5;
+	
 	public Anuncio() throws DuracionErroneaCancionException, TituloErroneoException{
-		super("PUBLICIDAD", 5);
+		super("PUBLICIDAD", Anuncio.duracion);
 	}
 	
 	public List<Contenido> buscar(@Nonnull String subcadena) throws CadenaErroneaException {
