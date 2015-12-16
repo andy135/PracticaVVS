@@ -111,7 +111,7 @@ public class ServidorSimple implements Servidor {
 		return list;
 	}
 
-	private final class SessionIdentifierGenerator {
+	private static final class SessionIdentifierGenerator {
 		private SecureRandom random = new SecureRandom();
 
 		public String nextSessionId() {
