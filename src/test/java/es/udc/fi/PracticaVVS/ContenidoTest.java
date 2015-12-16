@@ -182,11 +182,6 @@ public class ContenidoTest {
 	
 	//Tests Valores frontera para el metodo agregar de Emisoras
 	
-	@Test
-	public void testAgregarTodoNull() throws DuracionErroneaCancionException, TituloErroneoException{
-		Emisora e = new Emisora("E");
-	}
-	
 	@Test(expected=UnexistingContenidoException.class)
 	public void testAgregarTodoContenidoNull() throws DuracionErroneaCancionException, TituloErroneoException, UnexistingContenidoException{
 		Emisora e = new Emisora("E");
